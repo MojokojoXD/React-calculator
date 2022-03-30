@@ -49,8 +49,6 @@ function Calculator() {
         setInput(temp);
       }
     }
-
-    console.log(operands);
   };
 
   return (
