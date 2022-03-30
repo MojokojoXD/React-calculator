@@ -16,10 +16,6 @@
   border: none;
   flex-grow: 1;
 }
-.number-buttons .button-toggle {
-  color: black;
-  background-color: red;
-}
 
 .display {
   height: 25%;
@@ -57,10 +53,6 @@
   margin: 1.7% 0.92%;
   border: none;
   flex-grow: 1;
-}
-.operations .button-toggle {
-  color: black;
-  background-color: red;
 }
 
 .buttons-display{
