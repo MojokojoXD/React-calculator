@@ -15,7 +15,6 @@ function Button({buttonDisplay,setUserInput}){
 
 
     return (
-      // <button onClick={buttonResponse}>{buttonDisplay}</button>
       toggle ? (
         <button onClick={buttonResponse}>{buttonDisplay}</button>
       ) : (
