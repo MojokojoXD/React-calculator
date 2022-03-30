@@ -56,8 +56,10 @@ function Calculator() {
   return (
     <div className="calculator">
       <Display sign={sign} userInput={userInput} result={result} operands={operands}/>
-      <NumberButtons setUserInput={retrieveClickVal} />
-      <Operations getOps={retrieveClickVal} />
+      <div className="buttons-display">
+          <NumberButtons setUserInput={retrieveClickVal} />
+          <Operations getOps={retrieveClickVal} />
+      </div>
     </div>
   );
 }
