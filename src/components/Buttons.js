@@ -1,21 +1,32 @@
-
+import {useState,useEffect} from 'react'
 
 function Button({buttonDisplay,setUserInput}){
+    const [toggle, setToggle] = useState(true);
     
-    
-    const buttonResponse = (event) => {
+    const buttonResponse = () => {
         setUserInput(buttonDisplay);
-        event.target.classList.toggle('button-toggle')
-
-        setTimeout(()=> {
-            event.target.classList.toggle("button-toggle");
-        },200)
+        setToggle(false)
     }
 
 
-    return(
+    useEffect(()=>{
+        setTimeout(() => setToggle(true), 100)
+    },[toggle])
+
+
+    return (
+      // <button onClick={buttonResponse}>{buttonDisplay}</button>
+      toggle ? (
         <button onClick={buttonResponse}>{buttonDisplay}</button>
-    )
+      ) : (
+        <button onClick={buttonResponse} style={flash}>{buttonDisplay}</button>
+      )
+    );
+}
+
+
+const flash = {
+    backgroundColor: 'Red'
 }
 
 
