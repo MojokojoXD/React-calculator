@@ -1,0 +1,107 @@
+.number-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  height: 63%;
+  width: 49%;
+  margin-left: 0.5%;
+}
+.number-buttons button {
+  height: 20.5%;
+  width: 31.5%;
+  background-color: grey;
+  font-size: 99%;
+  border-radius: 5px;
+  margin: 3% 0.92%;
+  border: none;
+  flex-grow: 1;
+}
+.number-buttons .button-toggle {
+  color: black;
+  background-color: red;
+}
+
+.display {
+  height: 25%;
+  width: 95%;
+  background-color: grey;
+  margin: 5px auto;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.computation {
+  border-bottom: 2px solid black;
+  height: 50%;
+}
+
+.render-input span {
+  font-style: italic;
+}
+
+.operations {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  width: 49%;
+  height: 57%;
+  bottom: 60%;
+  left: 49%;
+  margin-left: 2%;
+}
+.operations button {
+  height: 20.5%;
+  width: 31.5%;
+  background-color: grey;
+  font-size: 99%;
+  border-radius: 5px;
+  margin: 1.7% 0.92%;
+  border: none;
+  flex-grow: 1;
+}
+.operations .button-toggle {
+  color: black;
+  background-color: red;
+}
+
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+#root {
+  height: 500px;
+  width: 600px;
+  padding: 5px;
+  box-shadow: 0 0 20px grey;
+  border-radius: 20px;
+}
+
+.App {
+  height: 100%;
+}
+.App h3 {
+  text-align: center;
+  font-weight: 200;
+  border-top: 3px solid;
+  width: fit-content;
+  border-radius: 3.5px;
+  margin: 0 auto;
+}
+.App .calculator {
+  height: 100%;
+}
+
+/*# sourceMappingURL=main.css.map */
