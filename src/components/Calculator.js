@@ -6,14 +6,17 @@ import Display from './Display'
 
 function Calculator() {
   const [userInput, setInput] = useState("");
+  const [displayIn, setDisplayIn] = useState('');
   const [operands, setOperand] = useState([]);
   const [sign, setSign] = useState("");
   const [result,setResult] = useState('');
 
   const retrieveClickVal = (num) => {
-    let temp;
+
+    let temp = displayIn + num.toString();
+    let temp_ = userInput + num.toString();
   
-    const tempArr = [];
+    let tempArr = [...operands];
 
     switch (true) {
       case num === "DEL":
@@ -26,34 +29,43 @@ function Calculator() {
         setOperand("");
         setSign("");
         setResult('');
+        setDisplayIn('')
         break;
 
       case num === "=":
-
         setOperand(state => {
           return [...state,userInput]
         });
+        
         setResult(operations[sign](operands[0],userInput))
         setInput('');
+        setOperand([])
+        setDisplayIn('')
         break;
 
       case num === "*" || num === "-" || num === "+" || num === "/":
-          setSign(num);
+          setSign(state=> num);
           tempArr.push(userInput)
-          setOperand([...tempArr])
-          setInput('');
+          setOperand(state => [...state,...tempArr])
+        
+          setDisplayIn(state=>temp_);
+          setInput(state=>'');
+          console.log(operands)
         break;
 
       default: {
-        temp = userInput + num.toString();
-        setInput(temp);
+        if(result){
+          setResult(state => '');
+        }
+        setInput(state=> temp_);
+        setDisplayIn(state=> temp)
       }
     }
   };
 
   return (
     <div className="calculator">
-      <Display sign={sign} userInput={userInput} result={result} operands={operands}/>
+      <Display userInput={userInput} result={result} displayIn={displayIn}/>
       <div className="buttons-display">
           <NumberButtons setUserInput={retrieveClickVal} />
           <Operations getOps={retrieveClickVal} />

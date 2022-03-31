@@ -1,10 +1,11 @@
-function Display({userInput,result,sign,operands}){
+function Display({userInput,result,displayIn}){
     return (
       <div className="display">
         <div className="computation">
-          <span className="operands">{operands[0]}</span>
+          <span>{displayIn}</span>
+          {/* <span className="operands">{operands[0]}</span>
           <span className="operands">{sign}</span>
-          <span className="operands">{operands[1]}</span>
+          <span className="operands">{operands[1]}</span> */}
           <br />
           {result ? <h4>{result}</h4> : null}
         </div>
