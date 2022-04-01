@@ -1,8 +1,3 @@
-.hover:hover{
-  color: black;
-  background-color: #b0b4b8;
-}
-
 .number-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -49,10 +44,25 @@
   align-content: space-around;
   width: 50%;
 }
-.operations button {
+.operations .hover{
   height: 20.5%;
   width: 31.5%;
   background-color: rgb(99, 103, 105);
+  font-size: 99%;
+  border-radius: 5px;
+  margin: 1%;
+  border: none;
+  flex-grow: 1;
+}
+
+.hover:hover, .equal:hover{
+  color: black;
+  background-color: rgb(202, 199, 199);
+}
+.equal{
+  background-color: rgb(174, 203, 250);
+  height: 20.5%;
+  width: 31.5%;
   font-size: 99%;
   border-radius: 5px;
   margin: 1%;

@@ -18,7 +18,7 @@ function Button({buttonDisplay,setUserInput}){
 
 
     return (
-      <button onClick={buttonResponse} style={toggle? null : flash} className='hover'>{buttonDisplay}</button>
+      <button onClick={buttonResponse} style={toggle? null : flash} className={buttonDisplay==='=' ? 'equal' : 'hover'}>{buttonDisplay}</button>
     );
 }
 
@@ -27,6 +27,7 @@ const flash = {
     backgroundColor: 'Red',
     color: 'black'
 }
+
 
 
 export {Button as default};

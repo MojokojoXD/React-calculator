@@ -10,11 +10,17 @@ function Calculator() {
   const [userInput, setInput] = useState("");
   const [displayIn, setDisplayIn] = useState('');
   const [operands, setOperand] = useState([]);
+  const [refs, setRef] = useState('');
   const [result,setResult] = useState('');
+
 
 
   const retrieveClickVal = (num) => {  
     switch (true) {
+      case num === "Ref":
+        setOperand([...operands,refs])
+        setDisplayIn(displayIn + num)
+        break;
       case num === "DEL":
         setInput(state => {
           return state.length === 0 ? '' : state.slice(0,state.length-1);
@@ -27,8 +33,9 @@ function Calculator() {
       case num === "RESET":
         setInput("");
         setOperand([]);
+        setRef('');
         setResult('');
-        setDisplayIn('')
+        setDisplayIn('');
         break;
 
       case num === "=":
@@ -36,9 +43,10 @@ function Calculator() {
           return [...state,userInput]
         });
         try{
-          setResult(eval([...operands,userInput].join('')))
+          setResult([...result,eval([...operands,userInput].join(''))])
+          setRef([...result, eval([...operands, userInput].join(""))]);
         }catch(err){
-          console.log(err)
+          setResult('Syntax error');
         }
         setInput('');
         setDisplayIn('')
@@ -51,11 +59,12 @@ function Calculator() {
             return state+num.toString();
           });
           setInput(state=>'');
+
         break;
 
       default: {
         if(result){
-          setResult(state => '');
+          setResult('')
         }
         setInput(userInput + num.toString());
         setDisplayIn(displayIn + num.toString());
@@ -66,7 +75,7 @@ function Calculator() {
   return (
     <contextToButtons.Provider value={retrieveClickVal}>
     <div className="calculator">
-      <Display result={result} displayIn={displayIn}/>
+      <Display result={result} displayIn={displayIn} refs={refs}/>
       <div className="buttons-display">
           <NumberButtons/>
           <Operations/>
