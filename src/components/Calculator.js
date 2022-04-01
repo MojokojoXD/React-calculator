@@ -4,7 +4,7 @@ import Operations from "./Operations";
 import { useState, createContext} from "react";
 import Display from './Display'
 
-const testContext = createContext();
+const contextToButtons = createContext();
 
 function Calculator() {
   const [userInput, setInput] = useState("");
@@ -12,7 +12,6 @@ function Calculator() {
   const [operands, setOperand] = useState([]);
   const [result,setResult] = useState('');
 
-  
 
   const retrieveClickVal = (num) => {  
     switch (true) {
@@ -65,15 +64,17 @@ function Calculator() {
   };
 
   return (
+    <contextToButtons.Provider value={retrieveClickVal}>
     <div className="calculator">
       <Display result={result} displayIn={displayIn}/>
       <div className="buttons-display">
-          <NumberButtons setUserInput={retrieveClickVal} />
-          <Operations getOps={retrieveClickVal} />
+          <NumberButtons/>
+          <Operations/>
       </div>
     </div>
+    </contextToButtons.Provider>
   );
 }
 
 
-export {Calculator as default,testContext};
+export {Calculator as default,contextToButtons};

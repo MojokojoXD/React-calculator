@@ -1,15 +1,16 @@
 import {useState,useEffect,useContext} from 'react'
-import {testContext} from './Calculator'
+import {contextToButtons} from './Calculator'
 
 function Button({buttonDisplay,setUserInput}){
     const [toggle, setToggle] = useState(true);
     
     const buttonResponse = () => {
-        setUserInput(buttonDisplay);
+        //setUserInput(buttonDisplay);
+        contextData(buttonDisplay);
         setToggle(false)
     }
 
-    const contextData = useContext(testContext)
+    const contextData = useContext(contextToButtons)
 
 
     useEffect(()=>{
