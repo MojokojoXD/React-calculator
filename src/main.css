@@ -1,3 +1,8 @@
+.hover:hover{
+  color: black;
+  background-color: #b0b4b8;
+}
+
 .number-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -7,13 +12,13 @@
 }
 
 .number-buttons button {
-  height: 20.5%;
-  width: 24.1%;
-  background-color: grey;
+  height: 22.5%;
+  width:31.3%;
+  background-color: rgb(66, 69, 72);
   font-size: 99%;
   border-radius: 5px;
-  margin: 1%;
   border: none;
+  margin: 1%;
   flex-grow: 1;
 }
 
@@ -47,16 +52,17 @@
 .operations button {
   height: 20.5%;
   width: 31.5%;
-  background-color: grey;
+  background-color: rgb(99, 103, 105);
   font-size: 99%;
   border-radius: 5px;
-  margin: 1.7% 0.92%;
+  margin: 1%;
   border: none;
   flex-grow: 1;
 }
 
 .buttons-display{
   display: flex;
+  height: 40%;
   width: 95%;
   margin: 3% auto;
   padding: 5px;

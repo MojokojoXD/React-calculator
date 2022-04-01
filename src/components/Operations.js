@@ -1,7 +1,7 @@
 // @ts-nocheck
 import Buttons from "./Buttons";
 
-const ops = ['*','+','-','/','DEL','RESET','=']
+const ops = ['*','+','-','/','(',')','DEL','RESET','=']
 
 const generateOps = (passOps) =>{
     const jsxOps = ops.map(ops =>

@@ -1,4 +1,5 @@
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useContext} from 'react'
+import {testContext} from './Calculator'
 
 function Button({buttonDisplay,setUserInput}){
     const [toggle, setToggle] = useState(true);
@@ -8,6 +9,8 @@ function Button({buttonDisplay,setUserInput}){
         setToggle(false)
     }
 
+    const contextData = useContext(testContext)
+
 
     useEffect(()=>{
         setTimeout(() => setToggle(true), 100)
@@ -16,16 +19,17 @@ function Button({buttonDisplay,setUserInput}){
 
     return (
       toggle ? (
-        <button onClick={buttonResponse}>{buttonDisplay}</button>
+        <button className='hover' onClick={buttonResponse}>{buttonDisplay}</button>
       ) : (
-        <button onClick={buttonResponse} style={flash}>{buttonDisplay}</button>
+        <button className= 'hover' onClick={buttonResponse} style={flash}>{buttonDisplay}</button>
       )
     );
 }
 
 
 const flash = {
-    backgroundColor: 'Red'
+    backgroundColor: 'Red',
+    color: 'black'
 }
 
 

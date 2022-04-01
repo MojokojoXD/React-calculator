@@ -1,33 +1,33 @@
 // @ts-nocheck
 import NumberButtons from "./NumberButtons";
 import Operations from "./Operations";
-import { useState } from "react";
+import { useState, createContext} from "react";
 import Display from './Display'
+
+const testContext = createContext();
 
 function Calculator() {
   const [userInput, setInput] = useState("");
   const [displayIn, setDisplayIn] = useState('');
   const [operands, setOperand] = useState([]);
-  const [sign, setSign] = useState("");
   const [result,setResult] = useState('');
 
-  const retrieveClickVal = (num) => {
-
-    let temp = displayIn + num.toString();
-    let temp_ = userInput + num.toString();
   
-    let tempArr = [...operands];
 
+  const retrieveClickVal = (num) => {  
     switch (true) {
       case num === "DEL":
-        temp = userInput.slice(0, userInput.length - 1);
-        setInput(temp);
+        setInput(state => {
+          return state.length === 0 ? '' : state.slice(0,state.length-1);
+        });
+        setDisplayIn(state => {
+          return state.length === 0 ? "" : state.slice(0, state.length - 1);
+        })
         break;
 
       case num === "RESET":
         setInput("");
-        setOperand("");
-        setSign("");
+        setOperand([]);
         setResult('');
         setDisplayIn('')
         break;
@@ -36,36 +36,37 @@ function Calculator() {
         setOperand(state => {
           return [...state,userInput]
         });
-        
-        setResult(operations[sign](operands[0],userInput))
+        try{
+          setResult(eval([...operands,userInput].join('')))
+        }catch(err){
+          console.log(err)
+        }
         setInput('');
-        setOperand([])
         setDisplayIn('')
+        setOperand([]);
         break;
 
-      case num === "*" || num === "-" || num === "+" || num === "/":
-          setSign(state=> num);
-          tempArr.push(userInput)
-          setOperand(state => [...state,...tempArr])
-        
-          setDisplayIn(state=>temp_);
+      case num === "*" || num === "-" || num === "+" || num === "/" || num === "(" || num ===")":
+          setOperand(state => [...state,userInput,num])
+          setDisplayIn(state=> {
+            return state+num.toString();
+          });
           setInput(state=>'');
-          console.log(operands)
         break;
 
       default: {
         if(result){
           setResult(state => '');
         }
-        setInput(state=> temp_);
-        setDisplayIn(state=> temp)
+        setInput(userInput + num.toString());
+        setDisplayIn(displayIn + num.toString());
       }
     }
   };
 
   return (
     <div className="calculator">
-      <Display userInput={userInput} result={result} displayIn={displayIn}/>
+      <Display result={result} displayIn={displayIn}/>
       <div className="buttons-display">
           <NumberButtons setUserInput={retrieveClickVal} />
           <Operations getOps={retrieveClickVal} />
@@ -74,11 +75,5 @@ function Calculator() {
   );
 }
 
-const operations = {
-  '+': function(num1, num2){return parseFloat(num1) + parseFloat(num2)},
-  '-': function(num1, num2){return parseFloat(num1) - parseFloat(num2)},
-  '*': function(num1,num2){return parseFloat(num1) * parseFloat(num2)},
-  '/': function(num1,num2){return parseFloat(num1) / parseFloat(num2);}
-}
 
-export default Calculator;
+export {Calculator as default,testContext};
