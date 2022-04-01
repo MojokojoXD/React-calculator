@@ -5,7 +5,6 @@ function Button({buttonDisplay,setUserInput}){
     const [toggle, setToggle] = useState(true);
     
     const buttonResponse = () => {
-        //setUserInput(buttonDisplay);
         contextData(buttonDisplay);
         setToggle(false)
     }
@@ -19,11 +18,7 @@ function Button({buttonDisplay,setUserInput}){
 
 
     return (
-      toggle ? (
-        <button className='hover' onClick={buttonResponse}>{buttonDisplay}</button>
-      ) : (
-        <button className= 'hover' onClick={buttonResponse} style={flash}>{buttonDisplay}</button>
-      )
+      <button onClick={buttonResponse} style={toggle? null : flash} className='hover'>{buttonDisplay}</button>
     );
 }
 
