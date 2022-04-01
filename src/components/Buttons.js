@@ -13,7 +13,7 @@ function Button({buttonDisplay,setUserInput}){
 
 
     useEffect(()=>{
-        setTimeout(() => setToggle(true), 100)
+        setTimeout(() => setToggle(true), 150)
     },[toggle])
 
 

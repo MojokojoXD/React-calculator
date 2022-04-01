@@ -26,6 +26,10 @@
   padding: 5px;
 }
 
+.render-input > p{
+  font-style: italic;
+}
+
 .computation {
   border-bottom: 2px solid black;
   height: 50%;
@@ -61,9 +65,10 @@
 }
 .equal{
   background-color: rgb(174, 203, 250);
+  color: black;
   height: 20.5%;
   width: 31.5%;
-  font-size: 99%;
+  font-size: 150%;
   border-radius: 5px;
   margin: 1%;
   border: none;
