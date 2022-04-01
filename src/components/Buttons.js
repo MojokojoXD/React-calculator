@@ -1,7 +1,7 @@
 import {useState,useEffect,useContext} from 'react'
 import {contextToButtons} from './Calculator'
 
-function Button({buttonDisplay,setUserInput}){
+function Button({buttonDisplay}){
     const [toggle, setToggle] = useState(true);
     
     const buttonResponse = () => {
@@ -13,7 +13,8 @@ function Button({buttonDisplay,setUserInput}){
 
 
     useEffect(()=>{
-        setTimeout(() => setToggle(true), 150)
+        let timeID = setTimeout(() => setToggle(true), 150);
+        return(()=> clearTimeout(timeID))
     },[toggle])
 
 

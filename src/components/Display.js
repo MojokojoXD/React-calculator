@@ -2,12 +2,12 @@ function Display({result,displayIn,refs}){
     return (
       <div className="display">
         <div className="computation">
-          <span>{displayIn}</span>
+          <span className="display-nums">{displayIn}</span>
           <br />
-          <h4>{result}</h4>
+          <h4 className="display-nums">{result}</h4>
         </div>
         <div className="render-input">
-          <p>Ref: {refs}</p>
+          <p className="display-nums">Ref: {refs}</p>
         </div>
       </div>
     );
